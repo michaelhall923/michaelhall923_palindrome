@@ -1,13 +1,21 @@
 require "michaelhall923_palindrome/version"
 
-class String
+module Michaelhall923Palindrome
   def palindrome?
-    processed_content == processed_content.reverse
+    processed_content.length > 0 ? processed_content == processed_content.reverse : false
   end
 
   private
 
     def processed_content
-      scan(/[a-z]/i).join.downcase
+      to_s.scan(/[a-z0-9]/i).join.downcase
     end
+end
+
+class String
+  include Michaelhall923Palindrome
+end
+
+class Integer
+  include Michaelhall923Palindrome
 end
